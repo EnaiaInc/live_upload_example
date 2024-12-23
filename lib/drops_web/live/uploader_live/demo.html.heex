@@ -12,7 +12,6 @@
 
   <article :if={@live_action == :start} class="column">
     <h2>Upload</h2>
-    <%= live_component(DropsWeb.UploadComponent, id: :file) %>
     <%= live_patch("Close", to: Routes.uploader_demo_path(@socket, :index)) %>
   </article>
 
