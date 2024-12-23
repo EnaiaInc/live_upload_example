@@ -58,7 +58,7 @@
     <form id="upload" method="post" action="#" phx-submit="save" phx-change="validate">
       <.live_file_input upload={@uploads.avatar} class="visually-hidden" />
       <%= unless Enum.empty?(@uploads.avatar.entries) do %>
-        <%= submit("Save", phx_disable_with: "Uploading...", style: "margin-top:1rem;") %>
+        {submit("Save", phx_disable_with: "Uploading...", style: "margin-top:1rem;")}
       <% end %>
     </form>
   </section>

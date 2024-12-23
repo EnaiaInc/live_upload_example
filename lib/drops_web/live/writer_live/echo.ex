@@ -43,7 +43,7 @@ defmodule DropsWeb.WriterLive.Echo do
           <div :for={entry <- @uploads.files.entries}>
             <DropsWeb.Uploads.progress entry={entry} />
             <div>
-              <span><%= entry.client_name %></span>
+              <span>{entry.client_name}</span>
               <a
                 href="#"
                 phx-click="cancel-upload"
@@ -55,7 +55,7 @@ defmodule DropsWeb.WriterLive.Echo do
             </div>
 
             <p :for={error <- upload_errors(@uploads.files, entry)} class="alert alert-danger">
-              <%= upload_error_to_string(error) %>
+              {upload_error_to_string(error)}
             </p>
           </div>
         </section>

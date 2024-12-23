@@ -22,15 +22,15 @@ defmodule DropsWeb.IssuesLive.ExternalUploadSingleEntry do
       <section class="column">
         <h2>Upload</h2>
 
-        <p>You may add up to <%= @uploads.avatar.max_entries %> avatar at a time.</p>
+        <p>You may add up to {@uploads.avatar.max_entries} avatar at a time.</p>
 
         <%= for error <- upload_errors(@uploads.avatar) do %>
-          <p class="alert alert-danger"><%= upload_error_to_string(error) %></p>
+          <p class="alert alert-danger">{upload_error_to_string(error)}</p>
         <% end %>
 
         <form id="issue-2037" phx-change="validate" phx-submit="save">
           <.live_file_input upload={@uploads.avatar} />
-          <%= submit("Save") %>
+          {submit("Save")}
         </form>
 
         <section
@@ -38,11 +38,11 @@ defmodule DropsWeb.IssuesLive.ExternalUploadSingleEntry do
           phx-drop-target={@uploads.avatar.ref}
           style="min-height: 100%;"
         >
-          <h3>Pending Uploads (<%= length(@uploads.avatar.entries) %>)</h3>
+          <h3>Pending Uploads ({length(@uploads.avatar.entries)})</h3>
 
           <%= for entry <- @uploads.avatar.entries do %>
             <%= for error <- upload_errors(@uploads.avatar, entry) do %>
-              <p class="alert alert-danger"><%= upload_error_to_string(error) %></p>
+              <p class="alert alert-danger">{upload_error_to_string(error)}</p>
             <% end %>
             <pre class="upload-entry"><code><%= inspect(entry, pretty: true) %></code></pre>
             <button type="button" class="button" phx-click="cancel-upload" phx-value-ref={entry.ref}>
@@ -53,10 +53,10 @@ defmodule DropsWeb.IssuesLive.ExternalUploadSingleEntry do
       </section>
 
       <section class="column">
-        <h2>UUIDs (<%= length(@uploaded_files) %>)</h2>
+        <h2>UUIDs ({length(@uploaded_files)})</h2>
 
         <%= for uuid <- @uploaded_files do %>
-          <p><%= uuid %></p>
+          <p>{uuid}</p>
         <% end %>
       </section>
     </section>

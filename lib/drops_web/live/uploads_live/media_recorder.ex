@@ -92,7 +92,7 @@ defmodule DropsWeb.UploadsLive.MediaRecorder do
 
     <section class="row upload-demo">
       <section class="column">
-        <p :if={@media_error} class="alert alert-danger"><%= @media_error %></p>
+        <p :if={@media_error} class="alert alert-danger">{@media_error}</p>
         <div id="media-recorder-demo" class="controls" phx-hook="MediaRecorderDemo">
           <button
             type="button"
@@ -109,7 +109,7 @@ defmodule DropsWeb.UploadsLive.MediaRecorder do
             id="record"
             class={"button button-outline#{unless @media_ready, do: ~S( visually-hidden)}"}
           >
-            <%= @record_action %>
+            {@record_action}
           </button>
         </div>
         <form
@@ -127,7 +127,7 @@ defmodule DropsWeb.UploadsLive.MediaRecorder do
         <%= for entry <- @uploads.clips.entries do %>
           <div class="upload-entry">
             <DropsWeb.Uploads.progress entry={entry} />
-            <p><%= entry.client_name %></p>
+            <p>{entry.client_name}</p>
           </div>
         <% end %>
 
@@ -138,7 +138,7 @@ defmodule DropsWeb.UploadsLive.MediaRecorder do
             <audio controls src={path}>
               Your browser does not support the <code>audio</code> element.
             </audio>
-            <p><code>audio.src = <%= path %></code></p>
+            <p><code>audio.src = {path}</code></p>
           </div>
         <% end %>
       </section>

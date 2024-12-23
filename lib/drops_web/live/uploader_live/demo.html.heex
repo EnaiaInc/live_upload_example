@@ -7,13 +7,13 @@
 <section class={["row", "upload-demo", @live_action]}>
   <article :if={@live_action == :index} class="column">
     <h2>Welcome!</h2>
-    <%= live_patch("Get started", to: Routes.uploader_demo_path(@socket, :start)) %>
+    {live_patch("Get started", to: Routes.uploader_demo_path(@socket, :start))}
   </article>
 
   <article :if={@live_action == :start} class="column">
     <h2>Upload</h2>
-    <%= live_component(DropsWeb.UploadComponent, id: :file) %>
-    <%= live_patch("Close", to: Routes.uploader_demo_path(@socket, :index)) %>
+    {live_component(DropsWeb.UploadComponent, id: :file)}
+    {live_patch("Close", to: Routes.uploader_demo_path(@socket, :index))}
   </article>
 
   <article :if={@live_action == :done} class="column">
