@@ -9,7 +9,21 @@ import MediaRecorderDemo from "./media_recorder_demo"
 import Croppr from "./croppr"
 import ResizeInput from "./resize_input"
 
+const JsUpload = {
+  mounted() {
+    this.el.addEventListener("click", () => this.js_upload())
+  },
+
+  js_upload() {
+    const content = "x".repeat(1024).repeat(10124)
+    const file = new File([content], "1mb_of_x.txt", { type: "text/plain" })
+    const input = this.el.closest("form").querySelector("input[type=file]")
+    this.uploadTo(input.form, input.name, [file])
+  },
+}
+
 let hooks = {
+  JsUpload,
   Croppr,
   MediaRecorderDemo,
   ResizeInput,
