@@ -12,7 +12,7 @@ defmodule DropsWeb.Uploads do
 
   attr :src, :string, required: true, doc: "The absolute URI path to the image"
   attr :caption, :string, default: ""
-  slot :inner_block
+  slot(:inner_block)
   def figure(assigns)
 
   attr :entry, Phoenix.LiveView.UploadEntry, required: true

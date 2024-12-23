@@ -13,20 +13,16 @@ function resizeImage(imgEl, wantedWidth, callback) {
 }
 
 export function convertResizeImageFiles(fileList, wantedWidth, callback) {
-  Array.from(fileList).forEach(file => {
-    let reader = new FileReader();
+  Array.from(fileList).forEach((file) => {
+    let reader = new FileReader()
 
     reader.addEventListener("load", () => {
       let imgEl = document.createElement("img")
 
       imgEl.addEventListener("load", () => {
-
         resizeImage(imgEl, wantedWidth, (blob) => {
-
           callback(blob)
-
         })
-
       })
 
       imgEl.src = reader.result

@@ -21,7 +21,6 @@
     <DropsWeb.Uploads.figure src={@file} caption={"DONE:#{@file}"} />
 
     <.link navigate={Routes.uploader_demo_path(@socket, :start)}>Again, again!</.link>
-    |
-    <.link patch={Routes.page_path(@socket, :index)}>All done</.link>
+    | <.link patch={Routes.page_path(@socket, :index)}>All done</.link>
   </article>
 </section>

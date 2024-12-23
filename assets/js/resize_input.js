@@ -1,8 +1,10 @@
-import { convertResizeImageFiles } from './image_utils'
+import { convertResizeImageFiles } from "./image_utils"
 
 // This hook attaches to a custom input element to resize selected images.
 export default ResizeInput = {
-  getUploadTarget() { return this.el.dataset.uploadTarget },
+  getUploadTarget() {
+    return this.el.dataset.uploadTarget
+  },
   mounted() {
     this.el.addEventListener("change", (e) => {
       e.preventDefault()
@@ -15,5 +17,5 @@ export default ResizeInput = {
         })
       }
     })
-  }
+  },
 }

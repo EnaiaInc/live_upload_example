@@ -22,7 +22,7 @@ function simulateFileUploadWithJitter(uploadEntry) {
 const Uploaders = {}
 
 Uploaders.WithJitter = function (entries) {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     let { file, meta } = entry
     console.log("[Uploaders.WithJitter] received file", meta, file)
     simulateFileUploadWithJitter(entry)
@@ -30,16 +30,20 @@ Uploaders.WithJitter = function (entries) {
 }
 
 Uploaders.NoJitter = function (entries) {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     let { file, meta } = entry
     let waitMs = randomWait()
-    console.log(`[Uploaders.NoJitter] received file, waiting ${waitMs}`, meta, file)
+    console.log(
+      `[Uploaders.NoJitter] received file, waiting ${waitMs}`,
+      meta,
+      file,
+    )
     setTimeout(() => markCompleted(entry), waitMs)
   })
 }
 
 Uploaders.NoWait = function (entries) {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     let { file, meta } = entry
     console.log(`[Uploaders.NoWait] received file`, meta, file)
     setTimeout(() => markCompleted(entry), 100)
@@ -47,7 +51,7 @@ Uploaders.NoWait = function (entries) {
 }
 
 Uploaders.ImmediatelyError = function (entries) {
-  entries.forEach(entry => entry.error())
+  entries.forEach((entry) => entry.error())
 }
 
 export default Uploaders

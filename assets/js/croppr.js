@@ -23,8 +23,8 @@ let Hook = {
       }
     })
 
-    this.el.addEventListener("dragover", e => e.preventDefault())
-    this.el.addEventListener("drop", e => {
+    this.el.addEventListener("dragover", (e) => e.preventDefault())
+    this.el.addEventListener("drop", (e) => {
       e.preventDefault()
       let files = Array.from(e.dataTransfer.files || [])
       if (files.length > 0) {
@@ -35,14 +35,17 @@ let Hook = {
         this.img.src = URL.createObjectURL(file)
         this.el.appendChild(this.img)
         this.croppr = new Croppr(this.img, {
-          onCropEnd: vals => cropprToBlob(this.img, vals, blob => this.upload(this.el.dataset.uploadName, [blob]))
+          onCropEnd: (vals) =>
+            cropprToBlob(this.img, vals, (blob) =>
+              this.upload(this.el.dataset.uploadName, [blob]),
+            ),
         })
       }
     })
   },
   destroyed() {
     this.croppr && this.croppr.destroy()
-  }
+  },
 }
 
 export default Hook

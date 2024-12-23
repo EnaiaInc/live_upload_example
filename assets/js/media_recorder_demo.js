@@ -3,10 +3,10 @@
 // external source) via LiveView.
 
 function SimpleRecorder(stream, mimeType, callback) {
-  let chunks = [];
+  let chunks = []
   let recorder = new MediaRecorder(stream, { type: mimeType })
 
-  recorder.addEventListener("dataavailable", event => {
+  recorder.addEventListener("dataavailable", (event) => {
     if (typeof event.data === "undefined") return
     if (event.data.size === 0) return
     chunks.push(event.data)
@@ -19,16 +19,22 @@ function SimpleRecorder(stream, mimeType, callback) {
   })
 
   return {
-    get state() { return recorder.state },
-    start(timeslice) { recorder.start(timeslice) },
-    stop() { recorder.stop() }
+    get state() {
+      return recorder.state
+    },
+    start(timeslice) {
+      recorder.start(timeslice)
+    },
+    stop() {
+      recorder.stop()
+    },
   }
 }
 
 let MediaRecorderDemo = {
   mounted() {
-    if (!('MediaRecorder' in window)) {
-      this.pushEvent("media-recorder:client:error", { "reason": "not_supported" })
+    if (!("MediaRecorder" in window)) {
+      this.pushEvent("media-recorder:client:error", { reason: "not_supported" })
       return
     }
 
@@ -36,23 +42,31 @@ let MediaRecorderDemo = {
       try {
         let stream = await navigator.mediaDevices.getUserMedia({
           audio: true,
-          video: false
+          video: false,
         })
 
-        this.recorder = SimpleRecorder(stream, "audio/webm", blob => {
+        this.recorder = SimpleRecorder(stream, "audio/webm", (blob) => {
           blob.name = "My Recording.webm"
           this.upload(name, [blob])
         })
 
         this.pushEvent("media-recorder:client:ready", { name })
       } catch {
-        this.pushEvent("media-recorder:client:error", { "reason": "access_denied" })
+        this.pushEvent("media-recorder:client:error", {
+          reason: "access_denied",
+        })
       }
     })
 
-    this.handleEvent("media-recorder:server:start", () => this.recorder && this.recorder.start())
-    this.handleEvent("media-recorder:server:stop", () => this.recorder && this.recorder.stop())
-  }
+    this.handleEvent(
+      "media-recorder:server:start",
+      () => this.recorder && this.recorder.start(),
+    )
+    this.handleEvent(
+      "media-recorder:server:stop",
+      () => this.recorder && this.recorder.stop(),
+    )
+  },
 }
 
 export default MediaRecorderDemo
