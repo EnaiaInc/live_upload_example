@@ -17,7 +17,6 @@ defmodule DropsWeb.ComponentUploadsLive do
     <section class="row upload-demo">
       <article class="column">
         <h2>Upload</h2>
-        {live_component(DropsWeb.UploadComponent, id: :avatar)}
       </article>
       <article :if={@avatar_path} class="column avatar">
         <h2>Complete!</h2>
