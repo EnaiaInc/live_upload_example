@@ -24,10 +24,10 @@ defmodule DropsWeb.IssuesLive.Issue2271 do
       <section class="column">
         <h2>Upload</h2>
 
-        <p>You may add up to <%= @uploads.avatar.max_entries %> avatar at a time.</p>
+        <p>You may add up to {@uploads.avatar.max_entries} avatar at a time.</p>
 
         <%= for error <- upload_errors(@uploads.avatar) do %>
-          <p class="alert alert-danger"><%= upload_error_to_string(error) %></p>
+          <p class="alert alert-danger">{upload_error_to_string(error)}</p>
         <% end %>
 
         <form
@@ -49,7 +49,7 @@ defmodule DropsWeb.IssuesLive.Issue2271 do
 
           <div :for={entry <- @uploads.avatar.entries}>
             <p :for={error <- upload_errors(@uploads.avatar, entry)} class="alert alert-danger">
-              <%= upload_error_to_string(error) %>
+              {upload_error_to_string(error)}
             </p>
             <DropsWeb.Uploads.progress entry={entry} />
             <.live_img_preview entry={entry} />

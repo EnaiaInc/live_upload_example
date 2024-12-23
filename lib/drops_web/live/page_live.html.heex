@@ -4,39 +4,39 @@
   <p>The following is a list of live upload demos:</p>
 
   <dl>
-    <dt><%= link("Basic Demo", to: Routes.basic_uploads_path(@socket, :index)) %></dt>
+    <dt>{link("Basic Demo", to: Routes.basic_uploads_path(@socket, :index))}</dt>
     <dd>Demonstrates basic upload features.</dd>
-    <dt><%= link("Auto Upload Demo", to: Routes.uploads_auto_path(@socket, :index)) %></dt>
+    <dt>{link("Auto Upload Demo", to: Routes.uploads_auto_path(@socket, :index))}</dt>
     <dd>Demonstrates auto uploads by consuming entries in the progress callback.</dd>
-    <dt><%= link("Component Demo", to: Routes.component_uploads_path(@socket, :index)) %></dt>
+    <dt>{link("Component Demo", to: Routes.component_uploads_path(@socket, :index))}</dt>
     <dd>Demonstrates uploads within a LiveComponent.</dd>
     <dt>
-      <%= link("Multiple Input Demo", to: Routes.multi_input_uploads_path(@socket, :index)) %>
+      {link("Multiple Input Demo", to: Routes.multi_input_uploads_path(@socket, :index))}
     </dt>
     <dd>Demonstrates multiple live file inputs within a single form.</dd>
     <dt>
-      <%= link("External Demo: Auto Uploads", to: Routes.external_auto_path(@socket, :index)) %>
+      {link("External Demo: Auto Uploads", to: Routes.external_auto_path(@socket, :index))}
     </dt>
     <dd>Demonstrates automatic uploads with an external (client-side) uploader.</dd>
-    <dt><%= link("Uploader Demo", to: Routes.uploader_demo_path(@socket, :index)) %></dt>
+    <dt>{link("Uploader Demo", to: Routes.uploader_demo_path(@socket, :index))}</dt>
     <dd>A multi-step uploader demo to stress-test component uploads.</dd>
     <dt>
-      <%= link("MediaRecorder Demo", to: Routes.uploads_media_recorder_path(@socket, :index)) %>
+      {link("MediaRecorder Demo", to: Routes.uploads_media_recorder_path(@socket, :index))}
     </dt>
     <dd>Record and upload an audio sample directly in the browser.</dd>
-    <dt><%= link("Croppr.js Demo", to: Routes.croppr_path(@socket, :index)) %></dt>
+    <dt>{link("Croppr.js Demo", to: Routes.croppr_path(@socket, :index))}</dt>
     <dd>Crop and manipulate images before uploading.</dd>
     <dt>
       <.link navigate={Routes.uploads_resize_path(@socket, :index)}>Resize Demo</.link>
     </dt>
     <dd>Demonstrates resizing images before uploading.</dd>
     <dt>
-      <%= link("Issue 2037", to: Routes.issues_external_upload_single_entry_path(@socket, :index)) %>
+      {link("Issue 2037", to: Routes.issues_external_upload_single_entry_path(@socket, :index))}
     </dt>
     <dd>External uploads bug when <code>max_entries: 1</code> and a client error occurs.</dd>
-    <dt><%= link("Issue 2271", to: Routes.issues_issue2271_path(@socket, :index)) %></dt>
+    <dt>{link("Issue 2271", to: Routes.issues_issue2271_path(@socket, :index))}</dt>
     <dd><code>max_entries: 1, auto_upload: true</code> fails to auto-upload every other file.</dd>
-    <dt><%= link("Issue 2392", to: Routes.issues_issue2392_path(@socket, :index)) %></dt>
+    <dt>{link("Issue 2392", to: Routes.issues_issue2392_path(@socket, :index))}</dt>
     <dd>Drag and drop bug when <code>max_entries: 1</code> after selecting a file via input.</dd>
 
     <dt>

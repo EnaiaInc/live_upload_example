@@ -40,7 +40,7 @@ defmodule DropsWeb.UploadsLive.Resize do
 
           <% # upload_errors/2 returns error atoms per upload entry %>
           <p :for={error <- upload_errors(@uploads.images, entry)} class="alert alert-danger">
-            <%= upload_error_to_string(error) %>
+            {upload_error_to_string(error)}
           </p>
         </div>
       </section>

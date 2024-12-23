@@ -8,10 +8,10 @@
   <section class="column">
     <h2>Upload</h2>
 
-    <p>You may add up to <%= @uploads.exhibit.max_entries %> exhibits at a time.</p>
+    <p>You may add up to {@uploads.exhibit.max_entries} exhibits at a time.</p>
 
     <%= for error <- upload_errors(@uploads.exhibit) do %>
-      <p class="alert alert-danger"><%= upload_error_to_string(error) %></p>
+      <p class="alert alert-danger">{upload_error_to_string(error)}</p>
     <% end %>
 
     <.form for={@form} phx-change="validate-user" id="user-form">
@@ -31,13 +31,13 @@
       phx-drop-target={@uploads.exhibit.ref}
       style="min-height: 100%;"
     >
-      <h3>Pending Uploads (<%= length(@uploads.exhibit.entries) %>)</h3>
+      <h3>Pending Uploads ({length(@uploads.exhibit.entries)})</h3>
 
       <%= for entry <- @uploads[:exhibit].entries do %>
         <div>
           <DropsWeb.Uploads.progress entry={entry} />
           <div>
-            <%= entry.uuid %><br />
+            {entry.uuid}<br />
             <a
               href="#"
               phx-click="cancel-upload"
@@ -53,7 +53,7 @@
   </section>
 
   <section class="column">
-    <h2>Uploaded Files (<%= length(@uploaded_files) %>)</h2>
+    <h2>Uploaded Files ({length(@uploaded_files)})</h2>
     <DropsWeb.Uploads.figure_group paths={@uploaded_files} />
   </section>
 </section>

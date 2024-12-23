@@ -3,7 +3,7 @@
 
 <form phx-change="change" phx-submit="submit">
   <%= if @selected_file do %>
-    <%= inspect(@selected_file) %>
+    {inspect(@selected_file)}
     <button type="button" phx-click="remove" phx-disable-with="Removing...">Remove</button>
   <% else %>
     <.live_component module={DropsWeb.FileComponent} file={@uploads.file} />

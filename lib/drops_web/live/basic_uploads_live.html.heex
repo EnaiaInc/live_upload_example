@@ -55,7 +55,7 @@
     <h2>Upload</h2>
 
     <% # you can reference the upload config to drive informational messages %>
-    <p>You may add up to <%= @uploads.exhibit.max_entries %> exhibits at a time.</p>
+    <p>You may add up to {@uploads.exhibit.max_entries} exhibits at a time.</p>
 
     <% # this form contains the live_file_input - you must bind phx-change and phx-submit on the form %>
     <form id="basic-uploads-form" phx-change="validate" phx-submit="save">
@@ -73,7 +73,7 @@
       <p>You can drag and drop files here, too.</p>
 
       <%= for error <- upload_errors(@uploads.exhibit) do %>
-        <p class="alert alert-danger"><%= upload_error_to_string(error) %></p>
+        <p class="alert alert-danger">{upload_error_to_string(error)}</p>
       <% end %>
 
       <% # the entries comprehension does the following:
@@ -107,7 +107,7 @@
 
           <% # upload_errors/2 returns error atoms per upload entry %>
           <%= for error <- upload_errors(@uploads.exhibit, entry) do %>
-            <p class="alert alert-danger"><%= upload_error_to_string(error) %></p>
+            <p class="alert alert-danger">{upload_error_to_string(error)}</p>
           <% end %>
         </div>
       <% end %>
