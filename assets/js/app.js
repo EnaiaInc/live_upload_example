@@ -8,6 +8,7 @@ import Uploaders from "./uploaders"
 import MediaRecorderDemo from "./media_recorder_demo"
 import Croppr from "./croppr"
 import ResizeInput from "./resize_input"
+import { NestedForm } from "./nested_form_hook"
 
 const JsUpload = {
   mounted() {
@@ -26,6 +27,7 @@ let hooks = {
   JsUpload,
   Croppr,
   MediaRecorderDemo,
+  NestedForm,
   ResizeInput,
 }
 
