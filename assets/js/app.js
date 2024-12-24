@@ -17,7 +17,7 @@ const JsUpload = {
   js_upload() {
     const content = "x".repeat(1024).repeat(10124)
     const file = new File([content], "1mb_of_x.txt", { type: "text/plain" })
-    const input = this.el.closest("form").querySelector("input[type=file]")
+    const input = document.querySelector("input[type=file]")
     this.uploadTo(input.form, input.name, [file])
   },
 }
