@@ -3,7 +3,7 @@ defmodule DropsWeb.UploadsLive.Auto do
   Demonstrates automatic uploads with the Phoenix Channels uploader.
   """
   use DropsWeb, :live_view
-
+  alias DropsWeb.Components.NestedForm
   @impl true
   def mount(_params, _session, socket) do
     {:ok,
