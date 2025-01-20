@@ -14,13 +14,19 @@
       <p class="alert alert-danger"><%= upload_error_to_string(error) %></p>
     <% end %>
 
+    <.form for={@form} phx-change="validate-user" id="user-form">
+      <.input field={@form[:name]} type="text" />
+      <button id="x" type="button" phx-hook="JsUpload">
+        Upload then Input
+      </button>
+      <button id="y" type="button" phx-hook="JsUpload" data-before>
+        Input then Upload
+      </button>
+    </.form>
+
     <form id="auto-form" phx-change="validate">
       <.live_file_input upload={@uploads.exhibit} />
-      <button id="x" type="button" phx-hook="JsUpload">
-        Upload via JS
-      </button>
     </form>
-
     <section
       class="pending-uploads"
       phx-drop-target={@uploads.exhibit.ref}

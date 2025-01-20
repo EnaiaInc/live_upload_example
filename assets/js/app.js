@@ -11,7 +11,12 @@ import ResizeInput from "./resize_input"
 
 const JsUpload = {
   mounted() {
-    this.el.addEventListener("click", () => this.js_upload())
+    this.el.addEventListener("click", () => {
+      const fillBefore = "before" in this.el.dataset
+      if (fillBefore) this.fill_input()
+      this.js_upload()
+      if (!fillBefore) this.fill_input()
+    })
   },
 
   js_upload() {
@@ -19,6 +24,13 @@ const JsUpload = {
     const file = new File([content], "1mb_of_x.txt", { type: "text/plain" })
     const input = document.querySelector("input[type=file]")
     this.uploadTo(input.form, input.name, [file])
+  },
+
+  fill_input() {
+    const input = document.querySelector("input[type=text]")
+    input.value = input.value + input.value.length
+    const event = new Event("input", { bubbles: true })
+    input.dispatchEvent(event)
   },
 }
 

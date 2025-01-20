@@ -1,7 +1,21 @@
+defmodule DropsWeb.User do
+  import Ecto.Changeset
+  use Ecto.Schema
+
+  schema "users" do
+    field :name
+  end
+
+  def change_user(user, params \\ %{}) do
+    user |> cast(params, [:name])
+  end
+end
+
 defmodule DropsWeb.UploadsLive.Auto do
   @moduledoc """
   Demonstrates automatic uploads with the Phoenix Channels uploader.
   """
+  alias DropsWeb.User
   use DropsWeb, :live_view
 
   @impl true
@@ -9,6 +23,7 @@ defmodule DropsWeb.UploadsLive.Auto do
     {:ok,
      socket
      |> assign(:uploaded_files, [])
+     |> assign(form: to_form(User.change_user(%User{})))
      |> allow_upload(:exhibit,
        accept: :any,
        max_entries: 10,
@@ -34,6 +49,16 @@ defmodule DropsWeb.UploadsLive.Auto do
   end
 
   @impl true
+  def handle_event("validate-user", %{"user" => params}, socket) do
+    form =
+      %User{}
+      |> User.change_user(params)
+      |> to_form(action: :validate)
+
+    {:noreply, assign(socket, form: form)}
+  end
+
+  @impl true
   def handle_event("validate", _params, socket) do
     {:noreply, socket}
   end
@@ -41,5 +66,14 @@ defmodule DropsWeb.UploadsLive.Auto do
   @impl true
   def handle_event("cancel-upload", %{"ref" => ref}, socket) do
     {:noreply, cancel_upload(socket, :exhibit, ref)}
+  end
+
+  attr :field, Phoenix.HTML.FormField
+  attr :rest, :global, include: ~w(type)
+
+  def input(assigns) do
+    ~H"""
+    <input id={@field.id} name={@field.name} value={@field.value} {@rest} />
+    """
   end
 end
